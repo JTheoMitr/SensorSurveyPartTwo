@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SensorSurveyPartTwo</string>
     <string name="label_light">Light Sensor: %1$.2f</string>
