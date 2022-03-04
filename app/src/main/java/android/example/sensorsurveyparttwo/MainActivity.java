@@ -12,13 +12,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SensorManager mSensorManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        SensorManager mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         List<Sensor> sensorList  =
                 mSensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     System.getProperty("line.separator"));
         }
 
-        TextView sensorTextView = (TextView) findViewById(R.id.sensor_list);
+        TextView sensorTextView = findViewById(R.id.sensor_list);
         sensorTextView.setText(sensorText);
     }
 
