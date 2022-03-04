@@ -1,12 +1,15 @@
 package android.example.sensorsurveyparttwo;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mSensorManager.unregisterListener(this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onSensorChanged(SensorEvent event) {
         int sensorType = event.sensor.getType();
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             case Sensor.TYPE_LIGHT: // Event came from the light sensor.
                 mTextSensorLight.setText(getResources().getString(
                         R.string.label_light, currentValue));
+                getWindow().getDecorView().setBackgroundColor(Color.argb(currentValue, currentValue * 1, currentValue * 2, currentValue * 3 ));
                 // Handle light sensor
                 break;
             case Sensor.TYPE_PROXIMITY: // Event came from the proximity sensor.
